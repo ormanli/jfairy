@@ -1,20 +1,20 @@
 package io.codearte.jfairy;
 
-import com.google.common.base.Optional;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Provider;
-import io.codearte.jfairy.data.DataMaster;
-import io.codearte.jfairy.data.DataMasterModule;
-import io.codearte.jfairy.data.MapBasedDataMaster;
-import io.codearte.jfairy.producer.util.LanguageCode;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Random;
+
+import io.codearte.jfairy.data.DataMaster;
+import io.codearte.jfairy.data.DataMasterModule;
+import io.codearte.jfairy.data.MapBasedDataMaster;
+import io.codearte.jfairy.producer.util.LanguageCode;
 
 /**
  * <p>Using a {@link #builder()}, you can configure the following fields:</p>
@@ -146,6 +146,8 @@ public class Bootstrap {
 				return new ZhFairyModule(dataMaster, random);
 			case DE:
 				return new DeFairyModule(dataMaster, random);
+			case TR:
+				return new TrFairyModule(dataMaster, random);
 			default:
 				LOG.info("No data for your language - using EN");
 				return new EnFairyModule(dataMaster, random);
